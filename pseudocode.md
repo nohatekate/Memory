@@ -6,6 +6,7 @@ Variables for Cards
 <!-- Define State Variables -->
 Guess (match or no match)
 
+<!-- Initialize game -->
 . Page will load - game will start (show back of cards) All cards in play need to be displayed face down(no image showing) on "board" --> how do I display backside of card(all same design? No design? blank square?)
 - array of all cards in play (squareEls?) === Cards need to be in a random order on board at start of game
 . Button to re start game

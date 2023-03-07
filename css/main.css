@@ -1,5 +1,6 @@
 *{
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    /* box-sizing: border-box; */
 }
 
 body{
@@ -8,28 +9,47 @@ body{
     align-items: center;
     justify-content: center;
     margin: 0;
+    height: 100vh;
+    background-color: rgb(247, 220, 224);
+    color: #26453e;
 }
+
 h1 {
     text-align: center;
     color: #26453e
 }
 
+p{
+    font-size: 20px;
+    margin: 0;
+}
+
 #game-table {
-    /* align-items: center; */
-    /* justify-content: center; */
     display: grid;
-    width: 90vmin;
-    height: 90vmin;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 10px;
+    border: 5px solid #26453e;
+    border-radius: 30px;
+    padding: 15px;
+}
 
-}.card{
+.card{
     margin: auto;
     display: grid;
     height: 150px;
     width: 150px;
     background-color: #26453e;
+    border-radius: 20px;
     /* justify-content: center; */
     /* align-items: center; */
   
+}
+
+button{
+    margin: 20px;
+    color:#26453e;
+    border-radius: 5px;
+    border: 2px solid #26453e;
 }

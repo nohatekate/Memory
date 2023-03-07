@@ -11,3 +11,11 @@
 
 
 /*----- functions -----*/
+function init(){
+
+}
+
+function render(){
+    renderTable();
+    renderGuessCount();
+}

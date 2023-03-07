@@ -1,6 +1,6 @@
 SCHEDULE
 Day 1 - Tuesday 
-    - Project Set Up (Github)
+    ✔ Project Set Up (Github)
     - Build Primary Game board
     - Stretch / Planning
 Day 2 - Wednesday 
@@ -13,7 +13,7 @@ Day 5 - Saturday (weekend)
     -Stretch Goals + Styling
 Day 6 - Sunday (weekend)
     -Documentation
-    
+
 https://github.com/nohatekate/Memory
 
 **MVP**
