@@ -9,7 +9,7 @@ body{
     align-items: center;
     justify-content: center;
     margin: 0;
-    height: 100vh;
+    height: 100%;
     background-color: rgb(247, 220, 224);
     color: #26453e;
 }
@@ -24,6 +24,13 @@ p{
     margin: 0;
 }
 
+button{
+    margin: 20px;
+    color:#26453e;
+    border-radius: 5px;
+    border: 2px solid #26453e;
+}
+
 #game-table {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -36,6 +43,8 @@ p{
 }
 
 .card{
+    text-align: center;
+    font-size: 120px;
     margin: auto;
     display: grid;
     height: 150px;
@@ -47,9 +56,7 @@ p{
   
 }
 
-button{
-    margin: 20px;
-    color:#26453e;
-    border-radius: 5px;
-    border: 2px solid #26453e;
+.number-of-moves{
+    font-size: 40px;
 }
+

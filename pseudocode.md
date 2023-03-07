@@ -20,7 +20,7 @@ card needs to show image (emoji???) (addEventListener to each "card"??) (functio
  - Two flipped cards will be compared
     - if match - cards stay image up || player keeps pair(cards dissapear from grid // maybe collect in a corner // or stay on board with image showing, but can't be clicked)
         - message? Great match! Keep going
-    - if no match - cards show back and go face down 
+    - if no match - cards go face down 
         - message? Bad guess, try again! 
 . turn ends if match is made or if cards flip over without match 
 begin another turn (keep track of turns/guesses)
@@ -30,3 +30,15 @@ When game ends because all cards match
     - message? You did it (add amount of time it took?)
 When game ends because time is up
     - message? Times Up! Better Luck next time! 
+
+<!-- How To Play Memory -->
+- shuffle (stretch goal)
+- place cards on table face down
+- flip one card image side up
+- flip second card image side up
+- compare cards
+ - if match - keep cards
+ - if no match - turn both cards face down
+- repeat until all cards match 
+- restart game
+
