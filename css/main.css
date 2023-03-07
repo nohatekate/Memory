@@ -50,10 +50,7 @@ button{
     height: 150px;
     width: 150px;
     background-color: #26453e;
-    border-radius: 20px;
-    /* justify-content: center; */
-    /* align-items: center; */
-  
+    border-radius: 20px;  
 }
 
 .number-of-moves{

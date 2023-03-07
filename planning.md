@@ -1,8 +1,8 @@
 SCHEDULE
 Day 1 - Tuesday 
     ✔ Project Set Up (Github)
-    - Build Primary Game board
-    - Stretch / Planning
+    ✔ Build Primary Game board
+    ✔ Stretch / Planning
 Day 2 - Wednesday 
     - Initial State + Render
 Day 3 - Thurdsay 
