@@ -79,6 +79,7 @@ function renderMessages() {
     //message for no match
     //message for loss (over max guess count)
     //message for win (all matches made)
+
 }
 // do messages and checkMatch do the same thing??
 
@@ -94,6 +95,10 @@ function renderCheckMatch() {
 // trying to figure out what happens when I click on my cards
 function handleCardClick(evt) {
     console.log(evt.target)
+    // cardEls.forEach(function (card){
 
+    gameTable[0] = 1;
+    console.log(gameTable)
+    gameTable[cardEls] = 1;
     render();
 }

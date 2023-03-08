@@ -39,3 +39,5 @@ cardEls.addEventListener("click", handleClick)
         //     } else {
         //     }
         // }
+
+            gameTable[cardEls] = 1;
