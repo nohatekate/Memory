@@ -40,4 +40,4 @@ cardEls.addEventListener("click", handleClick)
         //     }
         // }
 
-            gameTable[cardEls] = 1;
+           

@@ -94,11 +94,8 @@ function renderCheckMatch() {
 
 // trying to figure out what happens when I click on my cards
 function handleCardClick(evt) {
-    console.log(evt.target)
-    // cardEls.forEach(function (card){
-
-    gameTable[0] = 1;
-    console.log(gameTable)
+    gameTable[evt.target.id] = 1;
+    console.log(typeof gameTable)
     gameTable[cardEls] = 1;
     render();
 }
