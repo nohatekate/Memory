@@ -1,3 +1,32 @@
 
+//figuring out how to click on cards 
+// console.log(cardEls)
+
+// cardEls.forEach(div => {
+//     cardClick(div)
+// })
+// function cardClick(div) {
+//     console.log(div.id)
+// }
 
 cardEls.addEventListener("click", handleClick)
+
+
+// cardEls.forEach(div => {
+//     cardClick(div)
+// })
+// function cardClick(div) {
+//     console.log(div.id)
+// }
+
+// cardEls.addEventListener("click", handleCardClick)
+// cardEls.forEach(handleCardClick)
+
+   // 0 === not flipped (no emoji)
+    //1 === "flipped" (emoji showing)
+    // for (let i = 0; i<gameTable.length; i++){    // }
+
+//trying to figure out showing card image 
+      // cardEls.style.visibility = 0 ? "visible" : "hidden";
+    // // needs to start game with 8 cards face down
+    // const testClick = gameTable[idx].includes(0) ? "hidden" : "visible"

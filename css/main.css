@@ -1,9 +1,9 @@
-*{
+* {
     /* border: 1px solid red; */
     /* box-sizing: border-box; */
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,14 +19,14 @@ h1 {
     color: #26453e
 }
 
-p{
+p {
     font-size: 20px;
     margin: 0;
 }
 
-button{
+button {
     margin: 20px;
-    color:#26453e;
+    color: #26453e;
     border-radius: 5px;
     border: 2px solid #26453e;
 }
@@ -42,7 +42,7 @@ button{
     padding: 15px;
 }
 
-.card{
+.card {
     text-align: center;
     font-size: 120px;
     margin: auto;
@@ -50,10 +50,9 @@ button{
     height: 150px;
     width: 150px;
     background-color: #26453e;
-    border-radius: 20px;  
+    border-radius: 20px;
 }
 
-.number-of-moves{
+.number-of-moves {
     font-size: 40px;
 }
-
