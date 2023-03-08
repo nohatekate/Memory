@@ -1,16 +1,17 @@
 /*----- constants -----*/
 //cards for game play
 //array of random ordered cards
-const cards = ["🖤", "🙄", "💯", "🌈", "💯", "🙄", "🖤", "🌈"];
+const cards = ["🖤", "🙄", "💯", "🌈", "💯", "🌈", "🖤", "🙄"];
 
 const maxGuesses = 8;
 
 /*----- state variables -----*/
-let guessCount;
+let guessCount = 0;
 let gameTable = [];
-let winner;
+let winner = null;
 // when array has 2 cards - full - compare
 let cardsMatch = [];
+let clicks = 0;
 
 /*----- cached elements  -----*/
 const playAgainEl = document.querySelector("button")
@@ -25,6 +26,7 @@ const cardEls = document.querySelectorAll(".card")
 // need to be able to click the play again button to reset game
 //array of card elements to loop over to add event listener
 playAgainEl.addEventListener("click", init)
+
 for (let i = 0; i < cardEls.length; i++) {
     const currentCardEl = cardEls[i]
     currentCardEl.addEventListener("click", handleCardClick)
@@ -33,11 +35,13 @@ for (let i = 0; i < cardEls.length; i++) {
 
 /*----- functions -----*/
 //initialize game
-init()
+init();
 function init() {
+    // 0 === cards not showing || 1 === cards showing
     gameTable = [0, 0, 0, 0, 0, 0, 0, 0] //random assortment of 8 
+
     render();
-    // alert("Game is re-set!!!")
+    console.log("Game is re-set!!!")
 }
 
 function render() {
@@ -49,6 +53,20 @@ function render() {
 
 function renderGameTable() {
     // // needs to track where cards are
+    //to set state (new game)
+    //loop through the game table - if 0(meaning no card value) -> set card
+    for (let i = 0; i < gameTable.length; i++) {
+        const currentTableIdx = gameTable[i]
+        const currentEmoji = cards[i]
+        const currentCardElIdx = cardEls[i]
+        //when 0 - set current index to the value of card[i]
+        if (currentTableIdx === 1) {
+            currentCardElIdx.innerHTML = currentEmoji;
+        } else {
+            currentCardElIdx.innerHTML = ""
+        }
+    }
+
 }
 
 function renderGuessCount() {
@@ -65,6 +83,7 @@ function renderMessages() {
 // do messages and checkMatch do the same thing??
 
 function renderCheckMatch() {
+    //allwo for two clicks and then check 
     //if statement to compare two cards
     // if match made message match made
     // if no match message try again
@@ -75,4 +94,6 @@ function renderCheckMatch() {
 // trying to figure out what happens when I click on my cards
 function handleCardClick(evt) {
     console.log(evt.target)
+
+    render();
 }

@@ -30,3 +30,12 @@ cardEls.addEventListener("click", handleClick)
       // cardEls.style.visibility = 0 ? "visible" : "hidden";
     // // needs to start game with 8 cards face down
     // const testClick = gameTable[idx].includes(0) ? "hidden" : "visible"
+
+            
+            // for (let j = 0; j < cards.length; j++) {
+        //     const currentCardIdx = cards[j]
+        //     if (currentTableIdx === 0) {
+        //         currentTableIdx === currentCardIdx
+        //     } else {
+        //     }
+        // }

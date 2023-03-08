@@ -5,6 +5,31 @@ Day 1 - Tuesday
     ✔ Stretch / Planning
 Day 2 - Wednesday 
     - Initial State + Render
+    	Create & Display State 
+Identify DOM elements that will need to be updated
+Create and set starting values for each state
+Create render() and verify the DOM shows state in the browser
+	✔ Invoke render() in init()
+Create helper functions to control changes in state / browser
+Functions should describe changes in game play. 
+	Render functions might include:
+renderScore() 
+renderAnswers() 
+renderOptions()
+Controller functions might include 
+updateQuestion()
+shuffleCards()
+checkWinner()
+gameOver() 
+Manually update state to play game (start -> end game) 
+	Call helper functions() in the order they would be triggered 
+	Testing may be manual (invoking them after init() or using browser console
+	Verify the game can be played through manually
+
+Stretch / Planning
+	Link your UI interactive elements to the handler functions
+	Research advanced CSS feature for future development
+
 Day 3 - Thurdsay 
     Interactions + UI Updates
 Day 4 - Friday 
