@@ -14,21 +14,26 @@ let cardsMatch = [];
 
 /*----- cached elements  -----*/
 const playAgainEl = document.querySelector("button")
-
 const countEl = document.querySelector(".number-of-moves")
-
 const messageEl = document.querySelector(".message-updates")
+const cardEls = document.querySelectorAll(".card")
 
 //array of card elements to loop over and add emoji to using event listener
-const cardEls = document.querySelector(".card")
+
 console.log(cardEls)
 
+cardEls.forEach(div => {
+    cardClick(div)
+})
+function cardClick(div) {
+    console.log(div.id)
+}
 
 /*----- event listeners -----*/
 // need to be able to click on cards - show image - compare two cards - decide if they will stay or images hide again
 //click on each card
 // cardEls.addEventListener("click", handleCardClick)
-cardEls.forEach(handleCardClick)
+// cardEls.forEach(handleCardClick)
 // need to be able to click the play again button to reset game
 playAgainEl.addEventListener("click", init)
 
@@ -40,13 +45,13 @@ function init() {
     gameTable = [0, 0, 0, 0, 0, 0, 0, 0] //random assortment of 8 
     // 0 === not flipped (no emoji)
     //1 === "flipped" (emoji showing)
-    for (let i = 0; i<gameTable.length; i++){
+    // for (let i = 0; i<gameTable.length; i++){
 
     // }
     render();
     // alert("Game is re-set!!!")
 }
-}
+
 
 function render() {
     console.log("Calling render");
@@ -89,11 +94,11 @@ function renderCheckMatch() {
 }
 
 // trying to figure out what happens when I click on my cards
-function handleCardClick(evt){
-    console.log(evt.target)
+// function handleCardClick(evt){
+//     console.log(evt.target)
 // evt.target
 // console.log(currentCard.id)
 // const currentPick = cards.indexOf(evt.target)
-}
+// }
 
-handleCardClick(cardEls[0]);
+// handleCardClick(cardEls[0]);
