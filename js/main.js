@@ -2,16 +2,17 @@
 //cards for game play
 //array of random ordered cards
 const cards = ["🖤", "🙄", "💯", "🌈", "💯", "🌈", "🖤", "🙄"];
-
 const maxGuesses = 8;
 
 /*----- state variables -----*/
-let guessCount = 0;
-let gameTable = [];
-let winner = null;
-// when array has 2 cards - full - compare
 let cardsMatch = [];
-let clicks = 0;
+let clickCount;
+// when array has 2 cards - full - compare
+let gameTable = [];
+let guessCount;
+//every 2 clicks needs to add up to "1 move" and "minus 1 guess"
+let guessesLeft;
+let winner;
 
 /*----- cached elements  -----*/
 const playAgainEl = document.querySelector("button")
@@ -22,24 +23,26 @@ const cardEls = document.querySelectorAll(".card")
 /*----- event listeners -----*/
 // need to be able to click on cards - show image - compare two cards - decide if they will stay or images hide again
 //click on each card
-
-// need to be able to click the play again button to reset game
-//array of card elements to loop over to add event listener
-playAgainEl.addEventListener("click", init)
-
 for (let i = 0; i < cardEls.length; i++) {
     const currentCardEl = cardEls[i]
     currentCardEl.addEventListener("click", handleCardClick)
     console.log(currentCardEl)
 }
 
+// need to be able to click the play again button to reset game
+//array of card elements to loop over to add event listener
+playAgainEl.addEventListener("click", init)
+
 /*----- functions -----*/
 //initialize game
 init();
 function init() {
     // 0 === cards not showing || 1 === cards showing
+    clicks = 0;
     gameTable = [0, 0, 0, 0, 0, 0, 0, 0] //random assortment of 8 
-
+    guessesLeft = maxGuesses;
+    guessCount = 0;
+    winner = null;
     render();
     console.log("Game is re-set!!!")
 }
@@ -92,10 +95,17 @@ function renderCheckMatch() {
     // if guess count > max guess message you lose
 }
 
+function checkWinner() {
+    //as cards match - do all cards match? all cards match < maxGuesses === winner
+}
+
+function gameOver() {
+    // if guessCount > maxGuesses == you lose, game over
+    // if all cards match == you win, game over, play again
+}
+
 // trying to figure out what happens when I click on my cards
 function handleCardClick(evt) {
     gameTable[evt.target.id] = 1;
-    console.log(typeof gameTable)
-    gameTable[cardEls] = 1;
     render();
 }

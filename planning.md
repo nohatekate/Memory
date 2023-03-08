@@ -4,23 +4,26 @@ Day 1 - Tuesday
     ✔ Build Primary Game board
     ✔ Stretch / Planning
 Day 2 - Wednesday 
-    - Initial State + Render
+    ✔ Initial State + Render (need random order)
     	Create & Display State 
-Identify DOM elements that will need to be updated
-Create and set starting values for each state
 Create render() and verify the DOM shows state in the browser
 	✔ Invoke render() in init()
+
 Create helper functions to control changes in state / browser
 Functions should describe changes in game play. 
-	Render functions might include:
-renderScore() 
-renderAnswers() 
-renderOptions()
+	Render functions to help change state:
+//FIRST THING THURSDAY 
+work on counting clicks and comparing every two cards - updating the guess count and checking matches and updating messages
+
+renderGuessCount() 
+renderMessage() 
+renderCheckMatch()
+
 Controller functions might include 
-updateQuestion()
 shuffleCards()
 checkWinner()
 gameOver() 
+
 Manually update state to play game (start -> end game) 
 	Call helper functions() in the order they would be triggered 
 	Testing may be manual (invoking them after init() or using browser console
