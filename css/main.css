@@ -21,7 +21,7 @@ h1 {
 
 p {
     font-size: 20px;
-    margin: 0;
+    margin: 10px;
 }
 
 button {
@@ -53,6 +53,18 @@ button {
     border-radius: 20px;
 }
 
-.number-of-moves {
+.keeping-score {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.number-of-guesses {
+    /* align-items: start; */
     font-size: 40px;
+}
+
+.guesses-left {
+    font-size: 40px;
+
 }
