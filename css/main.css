@@ -56,13 +56,40 @@ button {
 .number-of-moves {
     font-size: 40px;
 } */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100%;
+    background-color: rgb(247, 220, 224);
+    color: #26453e;
+}
+
+h1 {
+    margin-top: 50px;
+    ;
+}
+
+p {
+    margin: 50px;
+}
+
+button {
+    margin: 50px;
+    color: #26453e;
+    border-radius: 5px;
+    border: 2px solid #26453e;
+}
 
 .flex-container {
     display: flex;
+    width: 100%;
 }
 
-.dodgerblue {
-    background-color: dodgerblue;
+.red {
+    background-color: rgb(197, 2, 2);
     height: 250px;
     width: 100px;
     margin: 0 auto;
@@ -79,7 +106,7 @@ button {
 
 /* This CSS rule will have to be last in order to simulate flipping the card! */
 .hidden {
-    background-color: black;
+    background-color: #26453e;
     height: 250px;
     width: 100px;
     margin: 0 auto;

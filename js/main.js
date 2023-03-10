@@ -110,7 +110,7 @@
 //     render();
 // }
 
-const colorArr = ['dodgerblue', 'orange', 'dodgerblue', 'orange']
+const colorArr = ['red', 'orange', 'red', 'orange']
 const cardArr = document.querySelectorAll('.hidden')
 const playAgainEl = document.querySelector("button")
 const messageEl = document.querySelector(".message-updates")
@@ -119,15 +119,11 @@ let clicks = 0
 let clickedCards = []
 let pairsMatched = 0
 
-
 cardArr.forEach((card, idx) => {
-
     card.addEventListener('click', (event) => {
         // messageEl.innerHTML = "You Clicked A Card!"
         // console.log(event.target) //This works, so callback to another function
         checkClassValue(event)
-
-
     })
 })
 
@@ -136,12 +132,12 @@ playAgainEl.addEventListener("click", init)
 function init() {
     cardArr.forEach((card, idx) => {
         card.setAttribute('class', `hidden ${colorArr[idx]}`)
-
     })
     console.log("Game Reset")
     clicks = 0
     clickedCards = []
     pairsMatched = 0
+    messageEl.innerHTML = "Test Your Memory!"
 }
 
 function checkClassValue(expectedEvent) {
