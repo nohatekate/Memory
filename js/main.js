@@ -170,7 +170,8 @@ function handleCardClick(evt) {
         }
     } else {
         gameTable[evt.target.id] = 0;
-
+        cardsMatch = [];
+        clickCount = 0;
     }
     // disable click on that same card ???
     render();
