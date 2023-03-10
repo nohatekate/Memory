@@ -56,25 +56,26 @@ button {
 .number-of-moves {
     font-size: 40px;
 } */
-​ .flex-container {
+
+.flex-container {
     display: flex;
 }
 
-​ .dodgerblue {
+.dodgerblue {
     background-color: dodgerblue;
     height: 250px;
     width: 100px;
     margin: 0 auto;
 }
 
-​ .orange {
+.orange {
     background-color: orange;
     height: 250px;
     width: 100px;
     margin: 0 auto;
 }
 
-​
+
 
 /* This CSS rule will have to be last in order to simulate flipping the card! */
 .hidden {

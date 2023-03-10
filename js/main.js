@@ -111,31 +111,48 @@
 // }
 
 const colorArr = ['dodgerblue', 'orange', 'dodgerblue', 'orange']
-const cardLocations = document.querySelectorAll('.hidden')
+const cardArr = document.querySelectorAll('.hidden')
+const playAgainEl = document.querySelector("button")
+const messageEl = document.querySelector(".message-updates")
+
 let clicks = 0
 let clickedCards = []
 let pairsMatched = 0
 
-function init(cardArr) {
+
+cardArr.forEach((card, idx) => {
+
+    card.addEventListener('click', (event) => {
+        // messageEl.innerHTML = "You Clicked A Card!"
+        // console.log(event.target) //This works, so callback to another function
+        checkClassValue(event)
+
+
+    })
+})
+
+playAgainEl.addEventListener("click", init)
+
+function init() {
     cardArr.forEach((card, idx) => {
         card.setAttribute('class', `hidden ${colorArr[idx]}`)
-        card.addEventListener('click', (event) => {
-            clicks++
-            console.log("Here is my current clicks amount: ", clicks)
-            // console.log(event.target) //This works, so callback to another function
-            checkClassValue(event)
-        })
-    })
 
+    })
+    console.log("Game Reset")
+    clicks = 0
+    clickedCards = []
+    pairsMatched = 0
 }
 
 function checkClassValue(expectedEvent) {
     console.log(expectedEvent.target.className)
     if (expectedEvent.target.className.includes('hidden')) {
         expectedEvent.target.classList.remove('hidden')
+        clicks++
+        console.log("Here is my current clicks amount: ", clicks)
         //Push into our clickedCards array 
-        clickedCards.push(expectedEvent.target.classList)
-        console.log(clickedCards)
+        clickedCards.push(expectedEvent.target.className)
+        // console.log(clickedCards)
         //This is a oneliner so we don't need curly brackets or the return keyword
         //the return keyword is implied on oneliners
         if (clicks === 2) checkValues(expectedEvent)
@@ -149,33 +166,54 @@ function checkClassValue(expectedEvent) {
 function checkValues(expectedEvent) {
     //Compare cards 
     //NOTE: YOU MAY NEED A WAY TO CHECK AGAINST EACH CARD MAYBE ANOTHER CONSTANT THAT IS AN ARRAY, AND HAS THE VALUES OF THE CLASS -> let cardsMatched = []
-    console.log("There are 2 clicks, which means that there are two cards to compare against")
+    // console.log("There are 2 clicks, which means that there are two cards to compare against")
+    console.log(clickedCards)
     if (clickedCards[0].value === clickedCards[1].value) {
+
         //Rest trackers: clicked and clickedCards
         //Callback to renderBoardVariables()
         renderBoardVariables()
         //Increment pairs matched
         incrementPairs()
         //Stretch goal: Track the clicked cards. If the cliced cards have already been registered as a match, then display a message that says you cannot use this card OR you can remove the event listener as well
+    } else {
+        renderBoardVariables()
     }
 }
 
 function renderBoardVariables() {
-    console.log("There's a match: ", clickedCards[0].value, clickedCards[1].value)
+    // console.log("There's a match: ", clickedCards[0].value, clickedCards[1].value)
     clicks = 0
     clickedCards = []
 }
 
 function incrementPairs() {
     pairsMatched++
-    console.log(pairsMatched)
+    // console.log(pairsMatched)
     //Check for a win
     checkWin()
 }
 
+function renderMessages() {
+
+    // if two cards match messageEl.textContent === "Match!"
+    //message for match made
+    // if two cards don't match messageEl.textContent === "No Match! Try Again!"
+    //message for no match
+    // if guessCount > maxGuesses messageEl.textContent === "Out of guesses! Play Again!"
+    //message for loss (over max guess count)
+    // if all cards match (no cards on table) messageEl.textContent === "Great job matching!"
+    //message for win (all matches made)
+
+}
+
 function checkWin() {
     //Check the pairsMatched variable
+    if (pairsMatched === 2) {
+        messageEl.innerHTML = "You Win!"
+    }
+
     //Append a DOM message to the browser -> and this would be MVP!
 }
 
-init(cardLocations)
+init()
