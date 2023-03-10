@@ -20,6 +20,7 @@ use timer for tracking how long it takes player to make all matching pairs
 keep track of best time???
   - card needs to flip to show image
   - 20 card (option between 8 / 12 / 20)
+  - CSS allow for small screens
 
 https://excalidraw.com/#json=H9_7MkksRv6yMVjNMy1DM,t-7nJhcbdDbQpFclek9vzA
 

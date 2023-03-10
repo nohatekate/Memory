@@ -139,7 +139,7 @@ function handleCardClick(evt) {
                 console.log(cardsMatch[0])
                 if (cardsMatch[0] === cardsMatch[1]) {
                     // if two cards match 
-                    messageEl.innerText = "Great Match!";
+                    messageEl.innerText = "Great Match! Keep Going!";
                     if (guessesLeft > 0) {
                         guessCount++;
                         guessesLeft--;
@@ -154,14 +154,14 @@ function handleCardClick(evt) {
                         messageEl.innerHTML = "YOU WIN! 🏆"
                     }
                 } else {
-                    messageEl.innerText = "NO MATCH! 👻"
+                    messageEl.innerText = "NO MATCH! 👻 Guess Again!"
                     if (guessesLeft > 0) {
                         guessCount++;
                         guessesLeft--;
                         // if guesses left is 0 then set message to you lose
                     }
                     if (guessesLeft === 0) {
-                        messageEl.innerText = "😝 YOU LOSE! TRY AGAIN! 😝"
+                        messageEl.innerText = "😝 YOU LOSE! START OVER! 😝"
                     }
                     //if guesses left is 0 
                     guessCountEl.innerText = guessCount;
