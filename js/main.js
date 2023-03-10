@@ -1,198 +1,94 @@
-// /*----- constants -----*/
-// //cards for game play
-// //array of random ordered cards
-// const cards = ["🖤", "🙄", "💯", "🌈", "💯", "🌈", "🖤", "🙄"];
-// const maxGuesses = 8;
+/*----- constants -----*/
+//cards for game play
+//array of random ordered cards
+const cards = ["🖤", "🙄", "💯", "🌈", "💯", "🌈", "🖤", "🙄"];
+const maxGuesses = 8;
 
-// /*----- state variables -----*/
-// let cardsMatch = [];
-// let clickCount;
-// // when array has 2 cards - full - compare
-// let gameTable = [];
-// let guessCount;
-// //every 2 clicks needs to add up to "1 move" and "minus 1 guess"
-// let guessesLeft;
-// let winner;
 
-// /*----- cached elements  -----*/
-// const playAgainEl = document.querySelector("button")
-// const countEl = document.querySelector(".number-of-moves")
-// const messageEl = document.querySelector(".message-updates")
-// const cardEls = document.querySelectorAll(".card")
+/*----- state variables -----*/
+let cardsMatch = [];
+let pairsMatched;
+let clickCount;
+// when array has 2 cards - full - compare
+let gameTable = [];
+let guessCount;
+//every 2 clicks needs to add up to "1 move" and "minus 1 guess"
+let guessesLeft;
+let winner;
 
-// /*----- event listeners -----*/
-// // need to be able to click on cards - show image - compare two cards - decide if they will stay or images hide again
-// //click on each card
-// for (let i = 0; i < cardEls.length; i++) {
-//     const currentCardEl = cardEls[i]
-//     currentCardEl.addEventListener("click", handleCardClick)
-//     console.log(currentCardEl)
-// }
-
-// // need to be able to click the play again button to reset game
-// //array of card elements to loop over to add event listener
-// playAgainEl.addEventListener("click", init)
-
-// /*----- functions -----*/
-// //initialize game
-// init();
-// function init() {
-//     // 0 === cards not showing || 1 === cards showing
-//     clicks = 0;
-//     gameTable = [0, 0, 0, 0, 0, 0, 0, 0] //random assortment of 8 
-//     guessesLeft = maxGuesses;
-//     guessCount = 0;
-//     winner = null;
-//     render();
-//     console.log("Game is re-set!!!")
-// }
-
-// function render() {
-//     renderGameTable();
-//     renderGuessCount();
-//     renderMessages();
-//     renderCheckMatch();
-// }
-
-// function renderGameTable() {
-//     // // needs to track where cards are
-//     //to set state (new game)
-//     //loop through the game table - if 0(meaning no card value) -> set card
-//     for (let i = 0; i < gameTable.length; i++) {
-//         const currentTableIdx = gameTable[i]
-//         const currentEmoji = cards[i]
-//         const currentCardElIdx = cardEls[i]
-//         //when 0 - set current index to the value of card[i]
-//         if (currentTableIdx === 1) {
-//             currentCardElIdx.innerHTML = currentEmoji;
-//         } else {
-//             currentCardElIdx.innerHTML = ""
-//         }
-//     }
-
-// }
-
-// function renderGuessCount() {
-//     //start game with zero guess count
-//     // add one guess count for every 2 cards clicked
-// }
-
-// function renderMessages() {
-//     //message for match made
-//     //message for no match
-//     //message for loss (over max guess count)
-//     //message for win (all matches made)
-
-// }
-// // do messages and checkMatch do the same thing??
-
-// function renderCheckMatch() {
-//     //allwo for two clicks and then check 
-//     //if statement to compare two cards
-//     // if match made message match made
-//     // if no match message try again
-//     // if all cards match message great job
-//     // if guess count > max guess message you lose
-// }
-
-// function checkWinner() {
-//     //as cards match - do all cards match? all cards match < maxGuesses === winner
-// }
-
-// function gameOver() {
-//     // if guessCount > maxGuesses == you lose, game over
-//     // if all cards match == you win, game over, play again
-// }
-
-// // trying to figure out what happens when I click on my cards
-// function handleCardClick(evt) {
-//     gameTable[evt.target.id] = 1;
-//     render();
-// }
-
-const colorArr = ['red', 'orange', 'red', 'orange']
-const cardArr = document.querySelectorAll('.hidden')
+/*----- cached elements  -----*/
 const playAgainEl = document.querySelector("button")
+const countEl = document.querySelector(".number-of-moves")
 const messageEl = document.querySelector(".message-updates")
+const cardEls = document.querySelectorAll(".card")
+const guessCountEl = document.querySelector(".number-of-guesses")
+const guessesLeftEl = document.querySelector(".guesses-left")
 
-let clicks = 0
-let clickedCards = []
-let pairsMatched = 0
+/*----- event listeners -----*/
+// need to be able to click on cards - show image - compare two cards - decide if they will stay or images hide again
+//click on each card
+for (let i = 0; i < cardEls.length; i++) {
+    const currentCardEl = cardEls[i]
+    currentCardEl.addEventListener("click", handleCardClick)
+    // console.log(currentCardEl)
+}
 
-cardArr.forEach((card, idx) => {
-    card.addEventListener('click', (event) => {
-        // messageEl.innerHTML = "You Clicked A Card!"
-        // console.log(event.target) //This works, so callback to another function
-        checkClassValue(event)
-    })
-})
-
+// need to be able to click the play again button to reset game
+//array of card elements to loop over to add event listener
 playAgainEl.addEventListener("click", init)
 
+/*----- functions -----*/
+//initialize game
+init();
 function init() {
-    cardArr.forEach((card, idx) => {
-        card.setAttribute('class', `hidden ${colorArr[idx]}`)
-    })
-    console.log("Game Reset")
-    clicks = 0
-    clickedCards = []
-    pairsMatched = 0
-    messageEl.innerHTML = "Test Your Memory!"
+    // 0 === cards not showing || 1 === cards showing
+    clickCount = 0;
+    pairsMatched = 0;
+    gameTable = [0, 0, 0, 0, 0, 0, 0, 0]; //random assortment of 8 
+    cardsMatch = [];
+    guessesLeft = maxGuesses;
+    guessCount = 0;
+    winner = null;
+    messageEl.innerText = "Test your Memory!"
+    render();
+    console.log("Game is re-set!!!")
 }
 
-function checkClassValue(expectedEvent) {
-    console.log(expectedEvent.target.className)
-    if (expectedEvent.target.className.includes('hidden')) {
-        expectedEvent.target.classList.remove('hidden')
-        clicks++
-        console.log("Here is my current clicks amount: ", clicks)
-        //Push into our clickedCards array 
-        clickedCards.push(expectedEvent.target.className)
-        // console.log(clickedCards)
-        //This is a oneliner so we don't need curly brackets or the return keyword
-        //the return keyword is implied on oneliners
-        if (clicks === 2) checkValues(expectedEvent)
-    } else if (!expectedEvent.target.className.includes('hidden')) {
-        // console.log("There is no hidden value! See for yourself: ", expectedEvent.target.className)
-        //Flip the card back over. Could be useful if there is not a match
-        expectedEvent.target.classList.add('hidden')
+function render() {
+    renderGuessCount();
+    renderMessages();
+    renderGameTable();
+}
+
+function renderGameTable() {
+    // // needs to track where cards are
+    //to set state (new game)
+    //loop through the game table - if 0(meaning no card value) -> set card
+    for (let i = 0; i < gameTable.length; i++) {
+        const currentTableIdx = gameTable[i]
+        const currentEmoji = cards[i]
+        const currentCardElIdx = cardEls[i]
+        //when 0 - set current index to the value of card[i]
+        if (currentTableIdx === 1) {
+            currentCardElIdx.innerHTML = currentEmoji;
+            // currentTableIdx.disabled = true;
+        } else {
+            currentCardElIdx.innerHTML = ""
+        }
     }
+
 }
 
-function checkValues(expectedEvent) {
-    //Compare cards 
-    //NOTE: YOU MAY NEED A WAY TO CHECK AGAINST EACH CARD MAYBE ANOTHER CONSTANT THAT IS AN ARRAY, AND HAS THE VALUES OF THE CLASS -> let cardsMatched = []
-    // console.log("There are 2 clicks, which means that there are two cards to compare against")
-    console.log(clickedCards)
-    if (clickedCards[0].value === clickedCards[1].value) {
-
-        //Rest trackers: clicked and clickedCards
-        //Callback to renderBoardVariables()
-        renderBoardVariables()
-        //Increment pairs matched
-        incrementPairs()
-        //Stretch goal: Track the clicked cards. If the cliced cards have already been registered as a match, then display a message that says you cannot use this card OR you can remove the event listener as well
-    } else {
-        renderBoardVariables()
-    }
-}
-
-function renderBoardVariables() {
-    // console.log("There's a match: ", clickedCards[0].value, clickedCards[1].value)
-    clicks = 0
-    clickedCards = []
-}
-
-function incrementPairs() {
-    pairsMatched++
-    // console.log(pairsMatched)
-    //Check for a win
-    checkWin()
+function renderGuessCount() {
+    //start game with zero guess count
+    // add one guess count for every 2 cards clicked
 }
 
 function renderMessages() {
+    // if (clickCount++) {
+    //     messageEl.innerHTML = "You Clicked A Card!"
+    // }
 
-    // if two cards match messageEl.textContent === "Match!"
     //message for match made
     // if two cards don't match messageEl.textContent === "No Match! Try Again!"
     //message for no match
@@ -202,14 +98,72 @@ function renderMessages() {
     //message for win (all matches made)
 
 }
+// do messages and checkMatch do the same thing??
 
-function checkWin() {
-    //Check the pairsMatched variable
-    if (pairsMatched === 2) {
-        messageEl.innerHTML = "You Win!"
-    }
+function checkMatch() {
 
-    //Append a DOM message to the browser -> and this would be MVP!
+
+    //allow for two clicks on separate cards and then check for match
+    // if match made - make cards color of background to "disapear"
+    //if statement to compare two cards
+    // if match made message match made
+    // if no match message try again
+    // if all cards match message great job
+    // if guess count > max guess message you lose
 }
 
-init()
+function checkWinner() {
+
+    //Check the pairsMatched variable
+
+    //as cards match - do all cards match? all cards match < maxGuesses === winner
+}
+
+function gameOver() {
+    // if guessCount > maxGuesses == you lose, game over
+    // if all cards match == you win, game over, play again
+}
+
+// trying to figure out what happens when I click on my cards
+//how to only allow for two clicks and each click on separate cards
+function handleCardClick(evt) {
+
+    if (gameTable[evt.target.id] === 0) {
+        //flipped card
+        gameTable[evt.target.id] = 1;
+        clickCount++;
+        cardsMatch.push(cards[evt.target.id])
+
+        if (clickCount === 2) {
+            console.log(cardsMatch[0])
+            if (cardsMatch[0] === cardsMatch[1]) {
+                // if two cards match 
+                messageEl.innerText = "Great Match!";
+                guessCount++;
+                guessesLeft--;
+                guessCountEl.innerText = guessCount;
+                guessesLeftEl.innerText = guessesLeft;
+                pairsMatched++;
+                cardsMatch = [];
+                clickCount = 0;
+
+                if (pairsMatched === cards.length / 2) {
+                    messageEl.innerHTML = "YOU WIN!"
+                }
+            } else {
+                messageEl.innerText = "NO MATCH!"
+                guessCount++;
+                guessesLeft--;
+                guessCountEl.innerText = guessCount;
+                guessesLeftEl.innerText = guessesLeft;
+                cardsMatch = [];
+                clickCount = 0;
+            }
+        }
+    } else {
+        gameTable[evt.target.id] = 0;
+
+    }
+    // disable click on that same card ???
+    render();
+}
