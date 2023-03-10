@@ -124,6 +124,45 @@ function gameOver() {
     // if guessCount > maxGuesses == you lose, game over
     // if all cards match == you win, game over, play again
 }
+function checkGuess() {
+    if (clickCount === 2) {
+        console.log(cardsMatch[0])
+        if (cardsMatch[0] === cardsMatch[1]) {
+            // if two cards match 
+            messageEl.innerText = "Great Match! Keep Going!";
+            if (guessesLeft > 0) {
+                guessCount++;
+                guessesLeft--;
+            }
+            handleGuess();
+            pairsMatched++;
+            if (pairsMatched === cards.length / 2) {
+                messageEl.innerHTML = "YOU WIN! 🏆"
+            } else if (guessesLeft === 0) {
+                messageEl.innerText = "😝 YOU LOSE! START OVER! 😝"
+            }
+        } else {
+            messageEl.innerText = "No Matches! 👻 Guess Again!"
+            if (guessesLeft > 0) {
+                guessCount++;
+                guessesLeft--;
+                // if guesses left is 0 then set message to you lose
+            }
+            if (guessesLeft === 0) {
+                messageEl.innerText = "😝 YOU LOSE! START OVER! 😝"
+            }
+            //if guesses left is 0 
+            handleGuess();
+        }
+    }
+}
+function handleGuess() {
+    guessCountEl.innerText = guessCount;
+    guessesLeftEl.innerText = guessesLeft;
+    cardsMatch = [];
+    clickCount = 0;
+}
+
 
 // trying to figure out what happens when I click on my cards
 //how to only allow for two clicks and each click on separate cards
@@ -134,44 +173,8 @@ function handleCardClick(evt) {
             gameTable[evt.target.id] = 1;
             clickCount++;
             cardsMatch.push(cards[evt.target.id])
+            checkGuess();
 
-            if (clickCount === 2) {
-                console.log(cardsMatch[0])
-                if (cardsMatch[0] === cardsMatch[1]) {
-                    // if two cards match 
-                    messageEl.innerText = "Great Match! Keep Going!";
-                    if (guessesLeft > 0) {
-                        guessCount++;
-                        guessesLeft--;
-                    }
-                    guessCountEl.innerText = guessCount;
-                    guessesLeftEl.innerText = guessesLeft;
-                    pairsMatched++;
-                    cardsMatch = [];
-                    clickCount = 0;
-
-                    if (pairsMatched === cards.length / 2) {
-                        messageEl.innerHTML = "YOU WIN! 🏆"
-                    } else if (guessesLeft === 0) {
-                        messageEl.innerText = "😝 YOU LOSE! START OVER! 😝"
-                    }
-                } else {
-                    messageEl.innerText = "No Matches! 👻 Guess Again!"
-                    if (guessesLeft > 0) {
-                        guessCount++;
-                        guessesLeft--;
-                        // if guesses left is 0 then set message to you lose
-                    }
-                    if (guessesLeft === 0) {
-                        messageEl.innerText = "😝 YOU LOSE! START OVER! 😝"
-                    }
-                    //if guesses left is 0 
-                    guessCountEl.innerText = guessCount;
-                    guessesLeftEl.innerText = guessesLeft;
-                    cardsMatch = [];
-                    clickCount = 0;
-                }
-            }
         } else {
             gameTable[evt.target.id] = 0;
             cardsMatch = [];
