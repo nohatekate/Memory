@@ -4,14 +4,12 @@
 const cards = ["🖤", "🙄", "💯", "🌈", "💯", "🌈", "🖤", "🙄"];
 const maxGuesses = 5;
 
-
 /*----- state variables -----*/
+let gameTable = [];
+// when array has 2 cards === full -> compare
 let cardsMatch = [];
 let pairsMatched;
 let clickCount;
-// when array has 2 cards - full - compare
-let gameTable = [];
-let guessCount;
 //every 2 clicks needs to add up to "1 move" and "minus 1 guess"
 let guessesLeft;
 
@@ -20,7 +18,7 @@ const playAgainEl = document.querySelector("button")
 const countEl = document.querySelector(".number-of-moves")
 const messageEl = document.querySelector(".message-updates")
 const cardEls = document.querySelectorAll(".card")
-const guessCountEl = document.querySelector(".number-of-guesses")
+const pairsMatchedCountEl = document.querySelector(".number-of-pairs")
 const guessesLeftEl = document.querySelector(".guesses-left")
 
 /*----- event listeners -----*/
@@ -46,9 +44,8 @@ function init() {
     gameTable = [0, 0, 0, 0, 0, 0, 0, 0]; //random assortment of 8 
     cardsMatch = [];
     guessesLeft = maxGuesses;
-    guessCount = 0;
-    guessCountEl.innerHTML = guessCount;
-    guessesLeftEl.innerHTML = maxGuesses
+    pairsMatchedCountEl.innerHTML = pairsMatched;
+    guessesLeftEl.innerHTML = maxGuesses;
     messageEl.innerText = "🧠 Test your Brain Space! 🧠"
 
     render();
@@ -56,7 +53,6 @@ function init() {
 }
 
 function render() {
-    renderGuessCount();
     renderMessages();
     renderGameTable();
 }
@@ -80,10 +76,7 @@ function renderGameTable() {
 
 }
 
-function renderGuessCount() {
-    //start game with zero guess count
-    // add one guess count for every 2 cards clicked
-}
+
 
 function renderMessages() {
     // if (clickCount++) {
@@ -129,13 +122,13 @@ function checkGuess() {
         console.log(cardsMatch[0])
         if (cardsMatch[0] === cardsMatch[1]) {
             // if two cards match 
+            pairsMatched++;
             messageEl.innerText = "Great Match! Keep Going!";
             if (guessesLeft > 0) {
-                guessCount++;
                 guessesLeft--;
             }
             handleGuess();
-            pairsMatched++;
+
             if (pairsMatched === cards.length / 2) {
                 messageEl.innerHTML = "YOU WIN! 🏆"
             } else if (guessesLeft === 0) {
@@ -144,7 +137,6 @@ function checkGuess() {
         } else {
             messageEl.innerText = "No Matches! 👻 Guess Again!"
             if (guessesLeft > 0) {
-                guessCount++;
                 guessesLeft--;
                 // if guesses left is 0 then set message to you lose
             }
@@ -157,7 +149,7 @@ function checkGuess() {
     }
 }
 function handleGuess() {
-    guessCountEl.innerText = guessCount;
+    pairsMatchedCountEl.innerText = pairsMatched;
     guessesLeftEl.innerText = guessesLeft;
     cardsMatch = [];
     clickCount = 0;
