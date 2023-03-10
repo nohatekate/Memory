@@ -152,9 +152,11 @@ function handleCardClick(evt) {
 
                     if (pairsMatched === cards.length / 2) {
                         messageEl.innerHTML = "YOU WIN! 🏆"
+                    } else if (guessesLeft === 0) {
+                        messageEl.innerText = "😝 YOU LOSE! START OVER! 😝"
                     }
                 } else {
-                    messageEl.innerText = "NO MATCH! 👻 Guess Again!"
+                    messageEl.innerText = "No Matches! 👻 Guess Again!"
                     if (guessesLeft > 0) {
                         guessCount++;
                         guessesLeft--;
@@ -176,6 +178,7 @@ function handleCardClick(evt) {
             clickCount = 0;
         }
         // disable click on that same card ???
-        render();
+
     }
+    render();
 }
