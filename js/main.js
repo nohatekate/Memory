@@ -14,7 +14,6 @@ let gameTable = [];
 let guessCount;
 //every 2 clicks needs to add up to "1 move" and "minus 1 guess"
 let guessesLeft;
-let winner;
 
 /*----- cached elements  -----*/
 const playAgainEl = document.querySelector("button")
@@ -50,9 +49,7 @@ function init() {
     guessCount = 0;
     guessCountEl.innerHTML = guessCount;
     guessesLeftEl.innerHTML = maxGuesses
-
-    winner = null;
-    messageEl.innerText = "Test your Memory!"
+    messageEl.innerText = "🧠 Test your Brain Space! 🧠"
 
     render();
     console.log("Game is re-set!!!")
@@ -131,48 +128,54 @@ function gameOver() {
 // trying to figure out what happens when I click on my cards
 //how to only allow for two clicks and each click on separate cards
 function handleCardClick(evt) {
+    if (pairsMatched !== cards.length / 2 && guessesLeft !== 0) {
+        if (gameTable[evt.target.id] === 0) {
+            //flipped card
+            gameTable[evt.target.id] = 1;
+            clickCount++;
+            cardsMatch.push(cards[evt.target.id])
 
-    if (gameTable[evt.target.id] === 0) {
-        //flipped card
-        gameTable[evt.target.id] = 1;
-        clickCount++;
-        cardsMatch.push(cards[evt.target.id])
+            if (clickCount === 2) {
+                console.log(cardsMatch[0])
+                if (cardsMatch[0] === cardsMatch[1]) {
+                    // if two cards match 
+                    messageEl.innerText = "Great Match!";
+                    if (guessesLeft > 0) {
+                        guessCount++;
+                        guessesLeft--;
+                    }
+                    guessCountEl.innerText = guessCount;
+                    guessesLeftEl.innerText = guessesLeft;
+                    pairsMatched++;
+                    cardsMatch = [];
+                    clickCount = 0;
 
-        if (clickCount === 2) {
-            console.log(cardsMatch[0])
-            if (cardsMatch[0] === cardsMatch[1]) {
-                // if two cards match 
-                messageEl.innerText = "Great Match!";
-                guessCount++;
-                guessesLeft--;
-                guessCountEl.innerText = guessCount;
-                guessesLeftEl.innerText = guessesLeft;
-                pairsMatched++;
-                cardsMatch = [];
-                clickCount = 0;
-
-                if (pairsMatched === cards.length / 2) {
-                    messageEl.innerHTML = "YOU WIN! 🏆"
+                    if (pairsMatched === cards.length / 2) {
+                        messageEl.innerHTML = "YOU WIN! 🏆"
+                    }
+                } else {
+                    messageEl.innerText = "NO MATCH! 👻"
+                    if (guessesLeft > 0) {
+                        guessCount++;
+                        guessesLeft--;
+                        // if guesses left is 0 then set message to you lose
+                    }
+                    if (guessesLeft === 0) {
+                        messageEl.innerText = "😝 YOU LOSE! TRY AGAIN! 😝"
+                    }
+                    //if guesses left is 0 
+                    guessCountEl.innerText = guessCount;
+                    guessesLeftEl.innerText = guessesLeft;
+                    cardsMatch = [];
+                    clickCount = 0;
                 }
-            } else {
-                messageEl.innerText = "NO MATCH! 👻"
-                guessCount++;
-                guessesLeft--;
-                // if guesses left is 0 then set message to you lose
-                if (guessesLeft === 0) {
-                    messageEl.innerText = "😝 YOU LOSE! TRY AGAIN! 😝"
-                }
-                guessCountEl.innerText = guessCount;
-                guessesLeftEl.innerText = guessesLeft;
-                cardsMatch = [];
-                clickCount = 0;
             }
+        } else {
+            gameTable[evt.target.id] = 0;
+            cardsMatch = [];
+            clickCount = 0;
         }
-    } else {
-        gameTable[evt.target.id] = 0;
-        cardsMatch = [];
-        clickCount = 0;
+        // disable click on that same card ???
+        render();
     }
-    // disable click on that same card ???
-    render();
 }

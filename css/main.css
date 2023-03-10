@@ -1,5 +1,5 @@
 * {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     box-sizing: border-box;
 }
 
@@ -20,6 +20,7 @@ body {
 
 h1 {
     text-align: center;
+    font-size: 40px;
     color: #26453e
 }
 
@@ -29,7 +30,7 @@ p {
 }
 
 button {
-    margin: 20px;
+    margin: 50px;
     color: #26453e;
     border-radius: 5px;
     border: 2px solid #26453e;
@@ -67,12 +68,12 @@ button {
     justify-content: space-between;
 }
 
-.number-of-guesses {
-    /* align-items: start; */
+.keeping-score>div {
+    text-align: center;
     font-size: 40px;
 }
 
-.guesses-left {
+.guesses-left,
+.number-of-guesses {
     font-size: 40px;
-
 }
