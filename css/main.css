@@ -42,6 +42,10 @@ button {
     padding: 15px;
 }
 
+.reminder {
+    font-size: 12px;
+}
+
 .card {
     text-align: center;
     font-size: 120px;

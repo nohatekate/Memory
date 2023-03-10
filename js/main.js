@@ -2,7 +2,7 @@
 //cards for game play
 //array of random ordered cards
 const cards = ["🖤", "🙄", "💯", "🌈", "💯", "🌈", "🖤", "🙄"];
-const maxGuesses = 8;
+const maxGuesses = 5;
 
 
 /*----- state variables -----*/
@@ -48,8 +48,12 @@ function init() {
     cardsMatch = [];
     guessesLeft = maxGuesses;
     guessCount = 0;
+    guessCountEl.innerHTML = guessCount;
+    guessesLeftEl.innerHTML = maxGuesses
+
     winner = null;
     messageEl.innerText = "Test your Memory!"
+
     render();
     console.log("Game is re-set!!!")
 }
@@ -148,12 +152,16 @@ function handleCardClick(evt) {
                 clickCount = 0;
 
                 if (pairsMatched === cards.length / 2) {
-                    messageEl.innerHTML = "YOU WIN!"
+                    messageEl.innerHTML = "YOU WIN! 🏆"
                 }
             } else {
-                messageEl.innerText = "NO MATCH!"
+                messageEl.innerText = "NO MATCH! 👻"
                 guessCount++;
                 guessesLeft--;
+                // if guesses left is 0 then set message to you lose
+                if (guessesLeft === 0) {
+                    messageEl.innerText = "😝 YOU LOSE! TRY AGAIN! 😝"
+                }
                 guessCountEl.innerText = guessCount;
                 guessesLeftEl.innerText = guessesLeft;
                 cardsMatch = [];
