@@ -5,6 +5,8 @@
 
 html {
     height: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Tilt Neon', cursive;
 }
 
 body {
@@ -20,7 +22,7 @@ body {
 
 h1 {
     text-align: center;
-    font-size: 40px;
+    font-size: 50px;
     color: #26453e
 }
 
@@ -47,8 +49,12 @@ button {
     padding: 15px;
 }
 
+.message-updates {
+    font-size: 35px;
+}
+
 .reminder {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .card {
@@ -70,7 +76,6 @@ button {
 
 .keeping-score>div {
     text-align: center;
-    font-size: 40px;
 }
 
 .guesses-left,
