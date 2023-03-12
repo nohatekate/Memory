@@ -27,3 +27,5 @@ game is over when all cards match or if player can't match in time
 https://excalidraw.com/#json=H9_7MkksRv6yMVjNMy1DM,t-7nJhcbdDbQpFclek9vzA
 
 Technologies Used: HTML, CSS, JavaScript
+
+<img width="752" alt="Screenshot of Game Win!" src="https://user-images.githubusercontent.com/119904831/224567730-b56c6dcb-73c2-41c5-8f46-13511f4015e7.png">
