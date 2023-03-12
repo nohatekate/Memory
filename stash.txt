@@ -41,3 +41,15 @@ cardEls.addEventListener("click", handleClick)
         // }
 
            
+           function stopShowingUnmatchedCards() {
+    for (let i = 0; i < cards.length; i++) {
+        const currentEmoji = cards[i]
+        if (cardsMatch[0] === currentEmoji) {
+            gameTable[i] = 0;
+        }
+        if (cardsMatch[1] === currentEmoji) {
+            gameTable[i] = 0;
+        }
+    }
+}
+  setTimeout(stopShowingUnmatchedCards, 1000)

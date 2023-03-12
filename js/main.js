@@ -2,7 +2,7 @@
 //cards for game play
 //array of "random" ordered cards
 const cards = ["🖤", "🙄", "💯", "🌈", "💯", "🌈", "🖤", "🙄", "🙈", "🫠", "🍑", "🐽", "😍", "🔥", "🐽", "😍", "🔥", "🍑", "🫠", "🙈"];
-const maxGuesses = 5;
+const maxGuesses = 20;
 
 /*----- state variables -----*/
 //game table to place cards face down
@@ -46,12 +46,29 @@ function init() {
     pairsMatchedCountEl.innerHTML = pairsMatched;
     guessesLeftEl.innerHTML = maxGuesses;
     messageEl.innerText = "🧠 Test your Brain Space! 🧠"
+    shuffleArray(cards);
+
     render();
 }
 
 function render() {
     renderGameTable();
 }
+
+//Fisher-Yates Shuffle//
+function shuffleArray(cards) {
+    // Start from the last element and swap
+    // one by one. We don't need to run for
+    // the first element that's why i > 0
+    for (let i = cards.length - 1; i > 0; i--) {
+        // pick a random index from 0 to i inclusive
+        const j = Math.floor(Math.random() * (i + 1)); // at random index
+        // Swap arr[i] with the element
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+    console.log(cards);
+}
+
 
 function renderGameTable() {
     // needs to track where cards are
