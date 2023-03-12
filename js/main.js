@@ -15,19 +15,19 @@ let clickCount;
 let guessesLeft;
 
 /*----- cached elements  -----*/
-const playAgainEl = document.querySelector("button")
-const messageEl = document.querySelector(".message-updates")
-const cardEls = document.querySelectorAll(".card")
-const pairsMatchedCountEl = document.querySelector(".number-of-pairs")
-const guessesLeftEl = document.querySelector(".guesses-left")
+const playAgainEl = document.querySelector("button");
+const messageEl = document.querySelector(".message-updates");
+const cardEls = document.querySelectorAll(".card");
+const pairsMatchedCountEl = document.querySelector(".number-of-pairs");
+const guessesLeftEl = document.querySelector(".guesses-left");
 
 /*----- event listeners -----*/
 // need to be able to click on cards - show image - compare two cards - decide if they will stay or images hide again
 //click on each card
 for (let i = 0; i < cardEls.length; i++) {
     //card elements to loop over to add event listener
-    const currentCardEl = cardEls[i]
-    currentCardEl.addEventListener("click", handleCardClick)
+    const currentCardEl = cardEls[i];
+    currentCardEl.addEventListener("click", handleCardClick);
 }
 
 // need to be able to click the play again button to reset game
@@ -36,6 +36,7 @@ playAgainEl.addEventListener("click", init)
 /*----- functions -----*/
 //initialize game
 init();
+
 function init() {
     // 0 === cards not showing || 1 === cards showing
     clickCount = 0;
@@ -45,7 +46,7 @@ function init() {
     guessesLeft = maxGuesses;
     pairsMatchedCountEl.innerHTML = pairsMatched;
     guessesLeftEl.innerHTML = maxGuesses;
-    messageEl.innerText = "🧠 Test your Brain Space! 🧠"
+    messageEl.innerText = "🧠 Test your Brain Space! 🧠";
     shuffleCardsArray(cards);
 
     render();
@@ -75,14 +76,14 @@ function renderGameTable() {
     //to set state (new game and changes)
     //loop through the game table - if 0(meaning no card value) -> set card
     for (let i = 0; i < gameTable.length; i++) {
-        const currentTableIdx = gameTable[i]
-        const currentEmoji = cards[i]
-        const currentCardElIdx = cardEls[i]
+        const currentTableIdx = gameTable[i];
+        const currentEmoji = cards[i];
+        const currentCardElIdx = cardEls[i];
         //when 0 - set current index to the value of card[i]
         if (currentTableIdx === 1) {
             currentCardElIdx.innerHTML = currentEmoji;
         } else {
-            currentCardElIdx.innerHTML = ""
+            currentCardElIdx.innerHTML = "";
         }
     }
 }
@@ -95,16 +96,16 @@ function checkGuess() {
             messageEl.innerText = "Great Match! Keep Going!";
             handleGuess();
             if (pairsMatched === cards.length / 2) {
-                messageEl.innerHTML = "YOU WIN! 🏆"
+                messageEl.innerHTML = "YOU WIN! 🏆";
             } else if (guessesLeft === 0) {
-                messageEl.innerText = "😝 YOU LOSE! START OVER! 😝"
+                messageEl.innerText = "😝 YOU LOSE! START OVER! 😝";
             }
         } else {
             //if two cards don't match
-            messageEl.innerText = "No Matches! 👻 Guess Again!"
+            messageEl.innerText = "No Matches! 👻 Guess Again!";
             guessesLeft--;
             if (guessesLeft === 0) {
-                messageEl.innerText = "😝 You're out of guesses! START OVER! 😝"
+                messageEl.innerText = "😝 You're out of guesses! START OVER! 😝";
             }
             handleGuess();
         }
@@ -138,8 +139,3 @@ function handleCardClick(evt) {
     }
     render();
 }
-
-
-// Take event listener off matched pairs
-
-// Change 1's to 0's to stop showing cards of the unmatched pairs

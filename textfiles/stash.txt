@@ -53,3 +53,9 @@ cardEls.addEventListener("click", handleClick)
     }
 }
   setTimeout(stopShowingUnmatchedCards, 1000)
+
+
+
+// Take event listener off matched pairs
+
+// Change 1's to 0's to stop showing cards of the unmatched pairs
