@@ -24,9 +24,11 @@ const guessesLeftEl = document.querySelector(".guesses-left");
 /*----- event listeners -----*/
 // need to be able to click on cards - show image - compare two cards - decide if they will stay or images hide again
 //click on each card
+//has been clicked variable
 for (let i = 0; i < cardEls.length; i++) {
     //card elements to loop over to add event listener
     const currentCardEl = cardEls[i];
+    //add a variable to each card if it's been clicked or not (true / false) / add additional id (flipped or not flipped)
     currentCardEl.addEventListener("click", handleCardClick);
 }
 
