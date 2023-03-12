@@ -1,14 +1,12 @@
 /*----- constants -----*/
 //cards for game play
 //array of "random" ordered cards
-const cards = ["🖤", "🙄", "💯", "🌈", "💯", "🌈", "🖤", "🙄", "🙈", "🫠", "🍑", "🐽", "😍", "🔥", "🐽", "😍", "🔥", "🍑", "🫠", "🙈"];
+const cards = ["🖤", "🙄", "💯", "🌈", "💯", "🌈", "🖤", "🙄", "🙈", "🤟", "🍑", "🐽", "😍", "🔥", "🐽", "😍", "🔥", "🍑", "🤟", "🙈"];
 const maxGuesses = 20;
 
 /*----- state variables -----*/
-//game table to place cards face down
-let gameTable = [];
-// when array has 2 cards === full -> compare
-let cardsMatch = [];
+let gameTable = [];   //game table to place cards face down
+let cardsMatch = [];  // when array has 2 cards === full -> compare
 let pairsMatched;
 //every 2 clicks needs to add up to "1 move" and "minus 1 guess if no match"
 let clickCount;
@@ -22,13 +20,10 @@ const pairsMatchedCountEl = document.querySelector(".number-of-pairs");
 const guessesLeftEl = document.querySelector(".guesses-left");
 
 /*----- event listeners -----*/
-// need to be able to click on cards - show image - compare two cards - decide if they will stay or images hide again
-//click on each card
-//has been clicked variable
+// click on each card - show image - compare two cards - decide if they will stay or images hide again
 for (let i = 0; i < cardEls.length; i++) {
     //card elements to loop over to add event listener
     const currentCardEl = cardEls[i];
-    //add a variable to each card if it's been clicked or not (true / false) / add additional id (flipped or not flipped)
     currentCardEl.addEventListener("click", handleCardClick);
 }
 
@@ -60,22 +55,15 @@ function render() {
 
 //Fisher-Yates Shuffle//
 function shuffleCardsArray(cards) {
-    // Start from the last element and swap
-    // one by one. We don't need to run for
-    // the first element that's why i > 0
     for (let i = cards.length - 1; i > 0; i--) {
-        // pick a random index from 0 to i inclusive
-        const j = Math.floor(Math.random() * (i + 1)); // at random index
-        // Swap arr[i] with the element
+        const j = Math.floor(Math.random() * (i + 1));
         [cards[i], cards[j]] = [cards[j], cards[i]];
     }
     console.log(cards);
 }
 
-
 function renderGameTable() {
-    // needs to track where cards are
-    //to set state (new game and changes)
+    // track where cards are and set state (new game and all game changes)
     //loop through the game table - if 0(meaning no card value) -> set card
     for (let i = 0; i < gameTable.length; i++) {
         const currentTableIdx = gameTable[i];
@@ -130,7 +118,6 @@ function handleCardClick(evt) {
             gameTable[evt.target.id] = 1;
             clickCount++;
             cardsMatch.push(cards[evt.target.id])
-
             checkGuess();
         } else {
             //if card is showing and we click - it stops showing

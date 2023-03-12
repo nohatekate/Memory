@@ -1,38 +1,8 @@
-
-//figuring out how to click on cards 
-// console.log(cardEls)
-
-// cardEls.forEach(div => {
-//     cardClick(div)
-// })
-// function cardClick(div) {
-//     console.log(div.id)
-// }
-
-cardEls.addEventListener("click", handleClick)
-
-
-// cardEls.forEach(div => {
-//     cardClick(div)
-// })
-// function cardClick(div) {
-//     console.log(div.id)
-// }
-
-// cardEls.addEventListener("click", handleCardClick)
-// cardEls.forEach(handleCardClick)
-
-   // 0 === not flipped (no emoji)
-    //1 === "flipped" (emoji showing)
-    // for (let i = 0; i<gameTable.length; i++){    // }
-
 //trying to figure out showing card image 
       // cardEls.style.visibility = 0 ? "visible" : "hidden";
     // // needs to start game with 8 cards face down
     // const testClick = gameTable[idx].includes(0) ? "hidden" : "visible"
-
-            
-            // for (let j = 0; j < cards.length; j++) {
+        // for (let j = 0; j < cards.length; j++) {
         //     const currentCardIdx = cards[j]
         //     if (currentTableIdx === 0) {
         //         currentTableIdx === currentCardIdx
@@ -40,7 +10,13 @@ cardEls.addEventListener("click", handleClick)
         //     }
         // }
 
-           
+//Trying to figure out how to stop allowing a click on a matched pair // and how to change unmatched pairs to not showing automatcially
+//has been clicked variable
+//add a variable to each card if it's been clicked or not (true / false) / add additional id (flipped or not flipped)
+//element.removeEventListener(type, handler)
+// Take event listener off matched pairs
+// Change 1's to 0's to stop showing cards of the unmatched pairs
+
            function stopShowingUnmatchedCards() {
     for (let i = 0; i < cards.length; i++) {
         const currentEmoji = cards[i]
@@ -54,10 +30,10 @@ cardEls.addEventListener("click", handleClick)
 }
   setTimeout(stopShowingUnmatchedCards, 1000)
 
-//element.removeEventListener(type, handler)
-
-// Take event listener off matched pairs
-
-// Change 1's to 0's to stop showing cards of the unmatched pairs
-
-//
+//Fisher-Yates Shuffle//
+   // Start from the last element and swap
+    // one by one. We don't need to run for
+    // the first element that's why i > 0
+           // pick a random index from 0 to i inclusive
+            // at random index
+        // Swap arr[i] with the element
