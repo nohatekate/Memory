@@ -46,7 +46,7 @@ function init() {
     pairsMatchedCountEl.innerHTML = pairsMatched;
     guessesLeftEl.innerHTML = maxGuesses;
     messageEl.innerText = "🧠 Test your Brain Space! 🧠"
-    shuffleArray(cards);
+    shuffleCardsArray(cards);
 
     render();
 }
@@ -56,7 +56,7 @@ function render() {
 }
 
 //Fisher-Yates Shuffle//
-function shuffleArray(cards) {
+function shuffleCardsArray(cards) {
     // Start from the last element and swap
     // one by one. We don't need to run for
     // the first element that's why i > 0
@@ -127,6 +127,7 @@ function handleCardClick(evt) {
             gameTable[evt.target.id] = 1;
             clickCount++;
             cardsMatch.push(cards[evt.target.id])
+
             checkGuess();
         } else {
             //if card is showing and we click - it stops showing
@@ -137,3 +138,8 @@ function handleCardClick(evt) {
     }
     render();
 }
+
+
+// Take event listener off matched pairs
+
+// Change 1's to 0's to stop showing cards of the unmatched pairs

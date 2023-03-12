@@ -32,7 +32,7 @@ When game ends because time is up
     - message? Times Up! Better Luck next time! 
 
 <!-- How To Play Memory -->
-- shuffle (stretch goal)
+- shuffle 
 - place cards on table face down
 - flip one card image side up
 - flip second card image side up

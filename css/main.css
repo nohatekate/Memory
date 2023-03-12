@@ -8,7 +8,6 @@
 html {
     font-family: 'Poppins', sans-serif;
     font-family: 'Tilt Neon', cursive;
-
 }
 
 body {
@@ -28,7 +27,7 @@ h1 {
     text-align: center;
     font-size: 3.125rem;
     color: #26453e;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 
 p {
@@ -48,7 +47,7 @@ button {
 
 .message-updates {
     font-size: 2.1875rem;
-    margin-bottom: 2rem;
+    /* margin-bottom: 1rem; */
 }
 
 .score-container {
@@ -82,9 +81,9 @@ button {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: .9375rem;
-    margin-top: .625rem;
-    border: .3125rem solid #26453e;
+    gap: .9rem;
+    margin-top: .6rem;
+    border: .3rem solid #26453e;
     border-radius: 1.875rem;
     padding: .9375rem;
     margin-bottom: 1rem;
@@ -92,12 +91,12 @@ button {
 
 .card {
     text-align: center;
-    font-size: 6.875rem;
+    font-size: 5.5rem;
     margin: auto;
     display: grid;
-    line-height: 9.375rem;
-    height: 9.375rem;
-    width: 9.375rem;
+    line-height: 7.5rem;
+    height: 7.5rem;
+    width: 7.5rem;
     background-color: #26453e;
     border-radius: 1.25rem;
 }

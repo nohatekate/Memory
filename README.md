@@ -3,14 +3,15 @@ MEMORY
 https://nohatekate.github.io/Memory/
 
 Rules:
+Shuffle Cards
 Cards start face down on table
 Player takes first turn by turning over two cards
 if two cards match player keeps cards 
 if two cards don't match - player turns cards back over and tries again
 game is over when all cards match or if player can't match in time
+Play Again! 
 
 **Planned Future Enhancements**
-  - Shuffle All Cards-
   - Timer 
       use timer for tracking how long it takes player to make all matching pairs
       keep track of best time
@@ -18,7 +19,7 @@ game is over when all cards match or if player can't match in time
   - flip animation to automatically flip card to not showing when guess is incorrect
   - Option for number of cards to match each game
   - CSS allow for screen size changes / media queries
-  - Do not allow clikcs on matched pairs
+  - Do not allow clicks on matched pairs
 
 **Known Bugs**
   - Can reclick on an already matched pair repeatedly and win game on same matching pair
