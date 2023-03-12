@@ -1,77 +1,67 @@
 * {
-    /* border: 1px solid red; */
+    /* border: .0625rem solid red; */
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 html {
-    height: 100%;
     font-family: 'Poppins', sans-serif;
     font-family: 'Tilt Neon', cursive;
+
 }
 
 body {
+    min-height: 100vh;
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin: 0;
-    height: 100%;
+    margin: auto;
     background-color: rgb(247, 220, 224);
     color: #26453e;
 }
 
 h1 {
     text-align: center;
-    font-size: 50px;
-    color: #26453e
+    font-size: 3.125rem;
+    color: #26453e;
+    margin-top: 1.5rem;
 }
 
 p {
-    font-size: 20px;
-    margin: 10px;
+    font-size: 1.25rem;
+    margin: 0;
+    /* margin: .625rem; */
 }
 
 button {
-    margin: 50px;
+    margin: 1.25rem;
     color: #26453e;
-    border-radius: 5px;
-    border: 2px solid #26453e;
-}
-
-#game-table {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 10px;
-    border: 5px solid #26453e;
-    border-radius: 30px;
-    padding: 15px;
+    border-radius: .3125rem;
+    border: .125rem solid #26453e;
+    font-size: 1rem;
+    padding: 6px 12px;
 }
 
 .message-updates {
-    font-size: 35px;
+    font-size: 2.1875rem;
+    margin-bottom: 2rem;
 }
 
-.reminder {
-    font-size: 14px;
-}
-
-.card {
-    text-align: center;
-    font-size: 120px;
-    margin: auto;
-    display: grid;
-    height: 150px;
-    width: 150px;
-    background-color: #26453e;
-    border-radius: 20px;
+.score-container {
+    display: flex;
+    column-gap: 28.125rem;
 }
 
 .keeping-score {
-    margin: 20px;
+    margin: 0;
     display: flex;
     justify-content: space-between;
+    text-align: center;
+    flex-direction: column;
 }
 
 .keeping-score>div {
@@ -80,5 +70,34 @@ button {
 
 .guesses-left,
 .number-of-pairs {
-    font-size: 40px;
+    font-size: 2.5rem;
+}
+
+.reminder {
+    font-size: .875rem;
+
+}
+
+#game-table {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: .9375rem;
+    margin-top: .625rem;
+    border: .3125rem solid #26453e;
+    border-radius: 1.875rem;
+    padding: .9375rem;
+    margin-bottom: 1rem;
+}
+
+.card {
+    text-align: center;
+    font-size: 6.875rem;
+    margin: auto;
+    display: grid;
+    line-height: 9.375rem;
+    height: 9.375rem;
+    width: 9.375rem;
+    background-color: #26453e;
+    border-radius: 1.25rem;
 }

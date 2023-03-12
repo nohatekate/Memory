@@ -1,7 +1,7 @@
 /*----- constants -----*/
 //cards for game play
 //array of random ordered cards
-const cards = ["🖤", "🙄", "💯", "🌈", "💯", "🌈", "🖤", "🙄"];
+const cards = ["🖤", "🙄", "💯", "🌈", "💯", "🌈", "🖤", "🙄", "🙈", "🫠", "🍑", "🐽", "😍", "🔥", "🐽", "😍", "🔥", "🍑", "🫠", "🙈"];
 const maxGuesses = 5;
 
 /*----- state variables -----*/
@@ -27,7 +27,6 @@ const guessesLeftEl = document.querySelector(".guesses-left")
 for (let i = 0; i < cardEls.length; i++) {
     const currentCardEl = cardEls[i]
     currentCardEl.addEventListener("click", handleCardClick)
-    // console.log(currentCardEl)
 }
 
 // need to be able to click the play again button to reset game
@@ -41,7 +40,7 @@ function init() {
     // 0 === cards not showing || 1 === cards showing
     clickCount = 0;
     pairsMatched = 0;
-    gameTable = [0, 0, 0, 0, 0, 0, 0, 0]; //random assortment of 8 
+    gameTable = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //random assortment of 20 
     cardsMatch = [];
     guessesLeft = maxGuesses;
     pairsMatchedCountEl.innerHTML = pairsMatched;
@@ -49,7 +48,6 @@ function init() {
     messageEl.innerText = "🧠 Test your Brain Space! 🧠"
 
     render();
-    console.log("Game is re-set!!!")
 }
 
 function render() {
@@ -119,14 +117,13 @@ function gameOver() {
 }
 function checkGuess() {
     if (clickCount === 2) {
-        console.log(cardsMatch[0])
         if (cardsMatch[0] === cardsMatch[1]) {
             // if two cards match 
             pairsMatched++;
             messageEl.innerText = "Great Match! Keep Going!";
-            if (guessesLeft > 0) {
-                guessesLeft--;
-            }
+            // if (guessesLeft > 0) {
+            //     guessesLeft--;
+            // }
             handleGuess();
 
             if (pairsMatched === cards.length / 2) {
@@ -141,7 +138,7 @@ function checkGuess() {
                 // if guesses left is 0 then set message to you lose
             }
             if (guessesLeft === 0) {
-                messageEl.innerText = "😝 YOU LOSE! START OVER! 😝"
+                messageEl.innerText = "😝 You're out of guesses! START OVER! 😝"
             }
             //if guesses left is 0 
             handleGuess();
@@ -154,7 +151,6 @@ function handleGuess() {
     cardsMatch = [];
     clickCount = 0;
 }
-
 
 // trying to figure out what happens when I click on my cards
 //how to only allow for two clicks and each click on separate cards
